@@ -1,0 +1,16 @@
+{
+    "name": "baytek/laravel-sortable",
+    "description": "Sorting of model elements and outputting the UI",
+    "authors": [
+        {
+            "name": "Yvon Viger",
+            "email": "yvon@baytek.ca"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Baytek\\LaravelSortable\\": ""
+        }
+    }
+}
