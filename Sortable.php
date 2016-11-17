@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace App\Traits;
+namespace Baytek\LaravelSortable;
 
 use Exception;
 use Request;
