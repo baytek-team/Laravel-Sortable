@@ -19,12 +19,14 @@ trait Sortable
 {
     public function scopeSorted($query)
     {
-    	$properties = collect(Request::instance()->query)->only(['sort', 'order']);
-		$sort = $properties->get('sort');
-		$order = $properties->get('order');
+        $properties = collect(Request::instance()->query)->only(['sort', 'order']);
+        $sort = $properties->get('sort');
+        $order = $properties->get('order');
 
         if(!$sort) {
-            return $query;
+            $model = $query->getModel();
+            $table = $model->getTable();
+            return $query->orderBy("$table.created_at", 'desc');
         }
 
         if(str_contains($sort, '.')) {
