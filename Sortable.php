@@ -24,9 +24,16 @@ trait Sortable
         $order = $properties->get('order');
 
         if(!$sort) {
+            //Try to sort by newest first if no sorting is provided
             $model = $query->getModel();
             $table = $model->getTable();
-            return $query->orderBy("$table.created_at", 'desc');
+
+            if (Schema::hasColumn($table, 'created_at')) {
+                return $query->orderBy("$table.created_at", 'desc');
+            }
+
+            //Otherwise, just return the query unmodified
+            return $query;
         }
 
         if(str_contains($sort, '.')) {
